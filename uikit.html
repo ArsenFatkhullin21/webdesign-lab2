@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI Kit — дизайн-система — CodeLab</title>
+  <meta name="description" content="Дизайн-система CodeLab: токены цвета, типографики и отступов, компоненты и их состояния.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <script>
+    /* Ранняя установка темы — без «вспышки» при загрузке */
+    (function () {
+      var s = localStorage.getItem('theme');
+      var t = (s === 'dark' || s === 'light') ? s : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+<div class="progress" role="presentation"></div>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="index.html" aria-label="CodeLab — на главную"><img src="img/logo.svg" alt="" width="32" height="32">CodeLab</a>
+    <nav class="nav" aria-label="Основная навигация"><a class="nav__link" href="index.html">Главная</a><a class="nav__link" href="courses.html">Курсы</a><a class="nav__link" href="teachers.html">Преподаватели</a><a class="nav__link" href="blog.html">Блог</a><a class="nav__link" href="contacts.html">Контакты</a></nav>
+    <div class="header__actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему" aria-pressed="false">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="theme-toggle__icon theme-toggle__icon--sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="theme-toggle__icon theme-toggle__icon--moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a class="btn btn--primary btn--sm header__login" href="contacts.html#enroll">Войти</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Открыть меню"><span class="burger__lines"></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Мобильная навигация"><a class="mobile-menu__link" href="index.html">Главная</a><a class="mobile-menu__link" href="courses.html">Курсы</a><a class="mobile-menu__link" href="teachers.html">Преподаватели</a><a class="mobile-menu__link" href="blog.html">Блог</a><a class="mobile-menu__link" href="contacts.html">Контакты</a>
+  <a class="btn btn--primary btn--lg" href="contacts.html#enroll">Войти</a>
+</nav>
+<main id="main">
+<section class="page-hero"><div class="container"><nav class="breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="index.html">Главная</a></li><li><span aria-current="page">UI Kit</span></li></ol></nav><h1>UI Kit</h1><p>Дизайн-система CodeLab: токены и компоненты с состояниями. Переключите тему в шапке — все значения берутся из семантических токенов.</p></div></section><div class="container page-body">
+<section class="uikit-section" id="colors"><h2>1. Цвета</h2>
+  <h3>Примитивные токены</h3><div class="swatches"><div class="swatch"><div class="swatch__color" style="background:var(--blue-50)"></div><div class="swatch__name">blue-50</div><div class="swatch__value">#EFF6FF</div></div><div class="swatch"><div class="swatch__color" style="background:var(--blue-400)"></div><div class="swatch__name">blue-400</div><div class="swatch__value">#60A5FA</div></div><div class="swatch"><div class="swatch__color" style="background:var(--blue-600)"></div><div class="swatch__name">blue-600</div><div class="swatch__value">#2563EB</div></div><div class="swatch"><div class="swatch__color" style="background:var(--blue-700)"></div><div class="swatch__name">blue-700</div><div class="swatch__value">#1D4ED8</div></div><div class="swatch"><div class="swatch__color" style="background:var(--gray-50)"></div><div class="swatch__name">gray-50</div><div class="swatch__value">#F9FAFB</div></div><div class="swatch"><div class="swatch__color" style="background:var(--gray-100)"></div><div class="swatch__name">gray-100</div><div class="swatch__value">#F3F4F6</div></div><div class="swatch"><div class="swatch__color" style="background:var(--gray-300)"></div><div class="swatch__name">gray-300</div><div class="swatch__value">#D1D5DB</div></div><div class="swatch"><div class="swatch__color" style="background:var(--gray-600)"></div><div class="swatch__name">gray-600</div><div class="swatch__value">#5B6472</div></div><div class="swatch"><div class="swatch__color" style="background:var(--gray-900)"></div><div class="swatch__name">gray-900</div><div class="swatch__value">#111827</div></div><div class="swatch"><div class="swatch__color" style="background:var(--green-500)"></div><div class="swatch__name">green-500</div><div class="swatch__value">#10B981</div></div><div class="swatch"><div class="swatch__color" style="background:var(--red-500)"></div><div class="swatch__name">red-500</div><div class="swatch__value">#EF4444</div></div><div class="swatch"><div class="swatch__color" style="background:var(--amber-500)"></div><div class="swatch__name">amber-500</div><div class="swatch__value">#F59E0B</div></div></div>
+  <h3 style="margin-top:var(--space-8)">Семантические токены (меняются в тёмной теме)</h3><div class="swatches"><div class="swatch"><div class="swatch__color" style="background:var(--color-bg)"></div><div class="swatch__name">color-bg</div><div class="swatch__value">фон страницы</div></div><div class="swatch"><div class="swatch__color" style="background:var(--color-surface)"></div><div class="swatch__name">color-surface</div><div class="swatch__value">карточки, панели</div></div><div class="swatch"><div class="swatch__color" style="background:var(--color-surface-alt)"></div><div class="swatch__name">color-surface-alt</div><div class="swatch__value">фон секций</div></div><div class="swatch"><div class="swatch__color" style="background:var(--color-text)"></div><div class="swatch__name">color-text</div><div class="swatch__value">основной текст</div></div><div class="swatch"><div class="swatch__color" style="background:var(--color-text-muted)"></div><div class="swatch__name">color-text-muted</div><div class="swatch__value">вторичный текст</div></div><div class="swatch"><div class="swatch__color" style="background:var(--color-border)"></div><div class="swatch__name">color-border</div><div class="swatch__value">границы</div></div><div class="swatch"><div class="swatch__color" style="background:var(--color-primary)"></div><div class="swatch__name">color-primary</div><div class="swatch__value">акцент</div></div><div class="swatch"><div class="swatch__color" style="background:var(--color-link)"></div><div class="swatch__name">color-link</div><div class="swatch__value">ссылки</div></div><div class="swatch"><div class="swatch__color" style="background:var(--color-btn)"></div><div class="swatch__name">color-btn</div><div class="swatch__value">фон кнопок</div></div><div class="swatch"><div class="swatch__color" style="background:var(--color-on-btn)"></div><div class="swatch__name">color-on-btn</div><div class="swatch__value">текст на кнопке</div></div></div>
+</section>
+<section class="uikit-section" id="typography"><h2>2. Типографика</h2>
+  <p>Заголовки — <strong style="font-family:var(--font-display)">Manrope 700/800</strong>, текст — <strong>Inter 400–600</strong>.</p>
+  <div class="type-row"><code>--fs-6xl · 3.75rem / 60px</code><span style="font-size:var(--fs-6xl);line-height:1.2;font-family:var(--font-display);font-weight:700">Научись программировать</span></div><div class="type-row"><code>--fs-5xl · 3rem / 48px</code><span style="font-size:var(--fs-5xl);line-height:1.2;font-family:var(--font-display);font-weight:700">Научись программировать</span></div><div class="type-row"><code>--fs-4xl · 2.25rem / 36px</code><span style="font-size:var(--fs-4xl);line-height:1.2;font-family:var(--font-display);font-weight:700">Научись программировать</span></div><div class="type-row"><code>--fs-3xl · 1.875rem / 30px</code><span style="font-size:var(--fs-3xl);line-height:1.2;font-family:var(--font-display);font-weight:700">Научись программировать</span></div><div class="type-row"><code>--fs-2xl · 1.5rem / 24px</code><span style="font-size:var(--fs-2xl);line-height:1.2;font-family:var(--font-display);font-weight:700">Научись программировать</span></div><div class="type-row"><code>--fs-xl · 1.25rem / 20px</code><span style="font-size:var(--fs-xl);line-height:1.2;font-family:inherit;font-weight:400">Научись программировать</span></div><div class="type-row"><code>--fs-lg · 1.125rem / 18px</code><span style="font-size:var(--fs-lg);line-height:1.2;font-family:inherit;font-weight:400">Научись программировать</span></div><div class="type-row"><code>--fs-base · 1rem / 16px</code><span style="font-size:var(--fs-base);line-height:1.2;font-family:inherit;font-weight:400">Научись программировать</span></div><div class="type-row"><code>--fs-sm · 0.875rem / 14px</code><span style="font-size:var(--fs-sm);line-height:1.2;font-family:inherit;font-weight:400">Научись программировать</span></div><div class="type-row"><code>--fs-xs · 0.75rem / 12px</code><span style="font-size:var(--fs-xs);line-height:1.2;font-family:inherit;font-weight:400">Научись программировать</span></div>
+</section>
+<section class="uikit-section" id="spacing"><h2>3. Отступы (8pt-сетка)</h2>
+  <div class="space-row"><span>--space-1</span><span class="space-bar" style="width:var(--space-1)"></span><span>4px</span></div><div class="space-row"><span>--space-2</span><span class="space-bar" style="width:var(--space-2)"></span><span>8px</span></div><div class="space-row"><span>--space-3</span><span class="space-bar" style="width:var(--space-3)"></span><span>12px</span></div><div class="space-row"><span>--space-4</span><span class="space-bar" style="width:var(--space-4)"></span><span>16px</span></div><div class="space-row"><span>--space-6</span><span class="space-bar" style="width:var(--space-6)"></span><span>24px</span></div><div class="space-row"><span>--space-8</span><span class="space-bar" style="width:var(--space-8)"></span><span>32px</span></div><div class="space-row"><span>--space-12</span><span class="space-bar" style="width:var(--space-12)"></span><span>48px</span></div><div class="space-row"><span>--space-16</span><span class="space-bar" style="width:var(--space-16)"></span><span>64px</span></div><div class="space-row"><span>--space-24</span><span class="space-bar" style="width:var(--space-24)"></span><span>96px</span></div>
+</section>
+<section class="uikit-section" id="buttons"><h2>4. Кнопки: варианты × состояния</h2>
+  <div class="states"><span class="states__head">Вариант</span><span class="states__head">Default</span><span class="states__head">Hover</span><span class="states__head">Focus</span><span class="states__head">Disabled</span><code>primary</code><button class="btn btn--primary" type="button">Кнопка</button><button class="btn btn--primary is-hover" type="button" tabindex="-1">Кнопка</button><button class="btn btn--primary is-focus" type="button" tabindex="-1">Кнопка</button><button class="btn btn--primary" type="button" disabled>Кнопка</button><code>secondary</code><button class="btn btn--secondary" type="button">Кнопка</button><button class="btn btn--secondary is-hover" type="button" tabindex="-1">Кнопка</button><button class="btn btn--secondary is-focus" type="button" tabindex="-1">Кнопка</button><button class="btn btn--secondary" type="button" disabled>Кнопка</button><code>ghost</code><button class="btn btn--ghost" type="button">Кнопка</button><button class="btn btn--ghost is-hover" type="button" tabindex="-1">Кнопка</button><button class="btn btn--ghost is-focus" type="button" tabindex="-1">Кнопка</button><button class="btn btn--ghost" type="button" disabled>Кнопка</button></div>
+  <h3 style="margin-top:var(--space-8)">Размеры</h3>
+  <p style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn btn--primary btn--sm" type="button">Small</button><button class="btn btn--primary" type="button">Medium</button><button class="btn btn--primary btn--lg" type="button">Large</button></p>
+</section>
+<section class="uikit-section" id="inputs"><h2>5. Поля ввода</h2>
+  <div class="grid grid--3">
+    <div class="field"><label class="label" for="ui-1">Default</label><input class="input" id="ui-1" placeholder="Ваше имя"></div>
+    <div class="field"><label class="label" for="ui-2">Hover</label><input class="input is-hover" id="ui-2" placeholder="Ваше имя"></div>
+    <div class="field"><label class="label" for="ui-3">Focus</label><input class="input is-focus" id="ui-3" value="Анна"></div>
+    <div class="field"><label class="label" for="ui-4">Disabled</label><input class="input" id="ui-4" placeholder="Недоступно" disabled></div>
+    <div class="field"><label class="label" for="ui-5">Select</label><select class="select" id="ui-5"><option>Выбор курса</option></select></div>
+    <label class="checkbox field"><input type="checkbox" checked><span>Чекбокс с подписью</span></label>
+  </div>
+</section>
+<section class="uikit-section" id="cards"><h2>6. Карточки</h2>
+  <div class="grid grid--3"><article class="card"><img class="card__image" src="img/photos/course-frontend.svg" alt="" width="800" height="450" loading="lazy">
+<div class="card__body"><span class="badge">Веб</span><h3 class="card__title"><a href="course.html">Frontend-разработчик</a></h3><p class="card__text">HTML, CSS, JavaScript и React с нуля до первого оффера.</p>
+<div class="card__meta"><span>6 месяцев</span><span class="card__price">89 000 ₽</span></div></div></article><article class="card"><img class="card__image" src="img/photos/course-python.svg" alt="" width="800" height="450" loading="lazy">
+<div class="card__body"><span class="badge">Бэкенд</span><h3 class="card__title"><a href="course.html">Python-разработчик</a></h3><p class="card__text">Бэкенд на Python: Django, базы данных, REST API.</p>
+<div class="card__meta"><span>7 месяцев</span><span class="card__price">95 000 ₽</span></div></div></article><article class="card"><img class="card__image" src="img/photos/course-design.svg" alt="" width="800" height="450" loading="lazy">
+<div class="card__body"><span class="badge">Дизайн</span><h3 class="card__title"><a href="course.html">UI/UX-дизайн</a></h3><p class="card__text">Figma, дизайн-системы, исследования и прототипы.</p>
+<div class="card__meta"><span>4 месяца</span><span class="card__price">69 000 ₽</span></div></div></article></div>
+</section>
+<section class="uikit-section" id="navigation"><h2>7. Навигация</h2>
+  <h3>Хлебные крошки</h3><nav class="breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="index.html">Главная</a></li><li><a href="courses.html">Курсы</a></li><li><span aria-current="page">Frontend-разработчик</span></li></ol></nav>
+  <h3 style="margin-top:var(--space-8)">Пагинация</h3>
+  <nav class="pagination" aria-label="Пример пагинации" style="justify-content:flex-start;margin-top:0"><a class="pagination__link" href="#navigation">←</a><a class="pagination__link" href="#navigation" aria-current="page">1</a><a class="pagination__link" href="#navigation">2</a><a class="pagination__link" href="#navigation">3</a><a class="pagination__link" href="#navigation">→</a></nav>
+  <h3 style="margin-top:var(--space-8)">Бейджи</h3><p style="display:flex;gap:8px"><span class="badge">Веб</span><span class="badge">Бэкенд</span><span class="badge">Дизайн</span></p>
+</section>
+</div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="index.html"><img src="img/logo.svg" alt="" width="32" height="32">CodeLab</a>
+        <p class="form-note" style="margin-top:12px;max-width:320px">Онлайн-школа программирования: практика, наставники и помощь с трудоустройством.</p>
+        <div class="socials">
+          <a href="https://t.me/" aria-label="Telegram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></a>
+          <a href="https://github.com/" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+          <a href="https://youtube.com/" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="m9.75 15.02 5.75-3.27-5.75-3.27z"/></svg></a>
+        </div>
+      </div>
+      <div><h2 class="footer__title">Обучение</h2><ul class="footer__list">
+        <li><a href="courses.html">Все курсы</a></li><li><a href="course.html">Frontend-разработчик</a></li><li><a href="teachers.html">Преподаватели</a></li></ul></div>
+      <div><h2 class="footer__title">Ресурсы</h2><ul class="footer__list">
+        <li><a href="blog.html">Блог</a></li><li><a href="post.html">Как начать в IT</a></li><li><a href="uikit.html">Дизайн-система (UI Kit)</a></li></ul></div>
+      <div><h2 class="footer__title">Контакты</h2><ul class="footer__list">
+        <li><a href="contacts.html">Написать нам</a></li><li><a href="mailto:hello@codelab.example">hello@codelab.example</a></li></ul></div>
+    </div>
+    <div class="footer__bottom"><p>© 2026 CodeLab. Учебный проект, лабораторная работа №2.</p><p>Сделано с CSS Grid и любовью к доступности</p></div>
+  </div>
+</footer>
+<script src="js/theme.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/scroll.js"></script>
+</body>
+</html>

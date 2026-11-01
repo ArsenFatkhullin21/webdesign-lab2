@@ -106,7 +106,7 @@ FOOTER = f'''<footer class="footer">
       <div><h2 class="footer__title">Обучение</h2><ul class="footer__list">
         <li><a href="courses.html">Все курсы</a></li><li><a href="course.html">Frontend-разработчик</a></li><li><a href="teachers.html">Преподаватели</a></li></ul></div>
       <div><h2 class="footer__title">Ресурсы</h2><ul class="footer__list">
-        <li><a href="blog.html">Блог</a></li><li><a href="post.html">Как начать в IT</a></li></ul></div>
+        <li><a href="blog.html">Блог</a></li><li><a href="post.html">Как начать в IT</a></li><li><a href="uikit.html">Дизайн-система (UI Kit)</a></li></ul></div>
       <div><h2 class="footer__title">Контакты</h2><ul class="footer__list">
         <li><a href="contacts.html">Написать нам</a></li><li><a href="mailto:hello@codelab.example">hello@codelab.example</a></li></ul></div>
     </div>
@@ -368,6 +368,65 @@ git commit -m "Первый проект"</code></pre>
   <li><strong>Часы работы</strong>Пн–Пт, 10:00–19:00</li></ul>
 <img class="map" src="img/photos/map.svg" alt="Схема проезда к офису CodeLab" width="800" height="450" loading="lazy"></section>
 </div></div>''')
+
+    # ---- UI Kit: документация дизайн-системы
+    sw = lambda name, var, val: (f'<div class="swatch"><div class="swatch__color" style="background:var({var})"></div>'
+                                 f'<div class="swatch__name">{name}</div><div class="swatch__value">{val}</div></div>')
+    prim = [("blue-50", "#EFF6FF"), ("blue-400", "#60A5FA"), ("blue-600", "#2563EB"), ("blue-700", "#1D4ED8"),
+            ("gray-50", "#F9FAFB"), ("gray-100", "#F3F4F6"), ("gray-300", "#D1D5DB"), ("gray-600", "#5B6472"),
+            ("gray-900", "#111827"), ("green-500", "#10B981"), ("red-500", "#EF4444"), ("amber-500", "#F59E0B")]
+    sem = [("color-bg", "фон страницы"), ("color-surface", "карточки, панели"), ("color-surface-alt", "фон секций"),
+           ("color-text", "основной текст"), ("color-text-muted", "вторичный текст"), ("color-border", "границы"),
+           ("color-primary", "акцент"), ("color-link", "ссылки"), ("color-btn", "фон кнопок"), ("color-on-btn", "текст на кнопке")]
+    sizes = [("fs-6xl", "3.75rem / 60px"), ("fs-5xl", "3rem / 48px"), ("fs-4xl", "2.25rem / 36px"), ("fs-3xl", "1.875rem / 30px"),
+             ("fs-2xl", "1.5rem / 24px"), ("fs-xl", "1.25rem / 20px"), ("fs-lg", "1.125rem / 18px"), ("fs-base", "1rem / 16px"),
+             ("fs-sm", "0.875rem / 14px"), ("fs-xs", "0.75rem / 12px")]
+    spaces = [1, 2, 3, 4, 6, 8, 12, 16, 24]
+    states_html = "".join(
+        f'<span class="states__head">{h}</span>' for h in ("Вариант", "Default", "Hover", "Focus", "Disabled")) + "".join(
+        f'<code>{v}</code><button class="btn btn--{v}" type="button">Кнопка</button>'
+        f'<button class="btn btn--{v} is-hover" type="button" tabindex="-1">Кнопка</button>'
+        f'<button class="btn btn--{v} is-focus" type="button" tabindex="-1">Кнопка</button>'
+        f'<button class="btn btn--{v}" type="button" disabled>Кнопка</button>' for v in ("primary", "secondary", "ghost"))
+    page("uikit.html", "UI Kit — дизайн-система", "Дизайн-система CodeLab: токены цвета, типографики и отступов, компоненты и их состояния.", "",
+         hero("UI Kit", "Дизайн-система CodeLab: токены и компоненты с состояниями. Переключите тему в шапке — все значения берутся из семантических токенов.", [("Главная", "index.html"), ("UI Kit", None)]) +
+         f'''<div class="container page-body">
+<section class="uikit-section" id="colors"><h2>1. Цвета</h2>
+  <h3>Примитивные токены</h3><div class="swatches">{"".join(sw(n, "--" + n, v) for n, v in prim)}</div>
+  <h3 style="margin-top:var(--space-8)">Семантические токены (меняются в тёмной теме)</h3><div class="swatches">{"".join(sw(n, "--" + n, d) for n, d in sem)}</div>
+</section>
+<section class="uikit-section" id="typography"><h2>2. Типографика</h2>
+  <p>Заголовки — <strong style="font-family:var(--font-display)">Manrope 700/800</strong>, текст — <strong>Inter 400–600</strong>.</p>
+  {"".join(f'<div class="type-row"><code>--{n} · {v}</code><span style="font-size:var(--{n});line-height:1.2;font-family:{"var(--font-display)" if i < 5 else "inherit"};font-weight:{700 if i < 5 else 400}">Научись программировать</span></div>' for i, (n, v) in enumerate(sizes))}
+</section>
+<section class="uikit-section" id="spacing"><h2>3. Отступы (8pt-сетка)</h2>
+  {"".join(f'<div class="space-row"><span>--space-{n}</span><span class="space-bar" style="width:var(--space-{n})"></span><span>{n*4}px</span></div>' for n in spaces)}
+</section>
+<section class="uikit-section" id="buttons"><h2>4. Кнопки: варианты × состояния</h2>
+  <div class="states">{states_html}</div>
+  <h3 style="margin-top:var(--space-8)">Размеры</h3>
+  <p style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn btn--primary btn--sm" type="button">Small</button><button class="btn btn--primary" type="button">Medium</button><button class="btn btn--primary btn--lg" type="button">Large</button></p>
+</section>
+<section class="uikit-section" id="inputs"><h2>5. Поля ввода</h2>
+  <div class="grid grid--3">
+    <div class="field"><label class="label" for="ui-1">Default</label><input class="input" id="ui-1" placeholder="Ваше имя"></div>
+    <div class="field"><label class="label" for="ui-2">Hover</label><input class="input is-hover" id="ui-2" placeholder="Ваше имя"></div>
+    <div class="field"><label class="label" for="ui-3">Focus</label><input class="input is-focus" id="ui-3" value="Анна"></div>
+    <div class="field"><label class="label" for="ui-4">Disabled</label><input class="input" id="ui-4" placeholder="Недоступно" disabled></div>
+    <div class="field"><label class="label" for="ui-5">Select</label><select class="select" id="ui-5"><option>Выбор курса</option></select></div>
+    <label class="checkbox field"><input type="checkbox" checked><span>Чекбокс с подписью</span></label>
+  </div>
+</section>
+<section class="uikit-section" id="cards"><h2>6. Карточки</h2>
+  <div class="grid grid--3">{card_course(COURSES[0], 0)}{card_course(COURSES[1], 1)}{card_course(COURSES[2], 2)}</div>
+</section>
+<section class="uikit-section" id="navigation"><h2>7. Навигация</h2>
+  <h3>Хлебные крошки</h3>{crumbs([("Главная", "index.html"), ("Курсы", "courses.html"), ("Frontend-разработчик", None)])}
+  <h3 style="margin-top:var(--space-8)">Пагинация</h3>
+  <nav class="pagination" aria-label="Пример пагинации" style="justify-content:flex-start;margin-top:0"><a class="pagination__link" href="#navigation">←</a><a class="pagination__link" href="#navigation" aria-current="page">1</a><a class="pagination__link" href="#navigation">2</a><a class="pagination__link" href="#navigation">3</a><a class="pagination__link" href="#navigation">→</a></nav>
+  <h3 style="margin-top:var(--space-8)">Бейджи</h3><p style="display:flex;gap:8px"><span class="badge">Веб</span><span class="badge">Бэкенд</span><span class="badge">Дизайн</span></p>
+</section>
+</div>''')
     write_map()
 
 
