@@ -1,5 +1,7 @@
 # CodeLab — многостраничный сайт IT-школы (Лабораторная работа №2)
 
+**Сайт:** https://arsenfatkhullin21.github.io/webdesign-lab2/ · **UI Kit:** https://arsenfatkhullin21.github.io/webdesign-lab2/uikit.html
+
 Адаптивный сайт на 7 страниц с дизайн-системой, тёмной темой и микроанимациями. Без сборщиков и зависимостей: чистые HTML/CSS/JS.
 
 ## Запуск
@@ -9,12 +11,12 @@
 ## Структура
 
 ```
-index.html  courses.html  course.html  teachers.html  blog.html  post.html  contacts.html
+index.html  courses.html  course.html  teachers.html  blog.html  post.html  contacts.html  uikit.html
 css/   tokens.css  base.css  layout.css  components.css  pages.css
 js/    theme.js  menu.js  scroll.js
 img/   logo.svg, favicon.svg, photos/ (SVG-иллюстрации)
 tools/build.py   генератор страниц (шапка/подвал/крошки — единый шаблон)
-report/          ОТЧЁТ.md и скриншоты
+report/          ОТЧЁТ.md (источник отчёта), скриншоты, замеры Lighthouse/WAVE/WebAIM
 ```
 
 ## Как менять страницы
